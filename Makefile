@@ -1,21 +1,25 @@
-CC=gcc
-CFLAGS=-c -Wall -g
-LDFLAGS=-ljpeg
-SOURCES= mandel.c jpegrw.c 
-OBJECTS=$(SOURCES:.c=.o)
-EXECUTABLE=mandel
+CC = gcc
+CFLAGS = -Wall -g
+LDFLAGS = -ljpeg -lm
+SOURCES = mandel.c mandelMovie.c jpegrw.c
+OBJECTS = $(SOURCES:.c=.o)
+EXECUTABLES = mandel mandelMovie
 
-all: $(SOURCES) $(EXECUTABLE) 
+# Default target
+all: $(EXECUTABLES)
 
-# pull in dependency info for *existing* .o files
--include $(OBJECTS:.o=.d)
+# Target to build the mandel executable
+mandel: mandel.o jpegrw.o
+	$(CC) mandel.o jpegrw.o $(LDFLAGS) -o mandel
 
-$(EXECUTABLE): $(OBJECTS)
-	$(CC) $(OBJECTS) $(LDFLAGS) -o $@
+# Target to build the mandelMovie executable
+mandelMovie: mandelMovie.o jpegrw.o
+	$(CC) mandelMovie.o jpegrw.o $(LDFLAGS) -o mandelMovie
 
-.c.o: 
-	$(CC) $(CFLAGS) $< -o $@
-	$(CC) -MM $< > $*.d
+# Generic rule for compiling .c files into .o files
+%.o: %.c
+	$(CC) $(CFLAGS) -c $< -o $@
 
+# Clean up generated files
 clean:
-	rm -rf $(OBJECTS) $(EXECUTABLE) *.d
+	rm -rf *.o $(EXECUTABLES)

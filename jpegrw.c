@@ -1,4 +1,6 @@
 /// 
+//  John Williams
+//  CPE 2600 121
 //  jpegrw.c
 //  Based on example code found here:
 //  https://www.tspi.at/2020/03/20/libjpegexample.html
