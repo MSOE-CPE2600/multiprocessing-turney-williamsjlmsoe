@@ -1,3 +1,5 @@
+//  John Williams
+//  CPE 2600 121
 #ifndef JPEGRW_H
 #define JPEGRW_H
 

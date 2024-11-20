@@ -1,4 +1,6 @@
 /// 
+//  John Williams
+//  CPE 2600 121
 //  mandel.c
 //  Based on example code found here:
 //  https://users.cs.fiu.edu/~cpoellab/teaching/cop4610_fall22/project3.html
@@ -22,7 +24,7 @@ static void show_help();
 int main( int argc, char *argv[] )
 {
 	char c;
-
+	
 	// These are the default configuration values used
 	// if no command line arguments are given.
 	const char *outfile = "mandel.jpg";
